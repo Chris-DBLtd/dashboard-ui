@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BCAP Insights - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/foundation.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <div class="jumbotron" style="display: inline;">
+                <div class="container" style="">
+                  <img src="https://bcapinsights.com/wp-content/uploads/2018/05/logo.png" alt="">
+                  <ul class="nav nav-tabs">
+                        <li role="presentation" class="active"><a href="#">Overview</a></li>
+                        <li role="presentation"><a href="#">Coin List</a></li>
+                        <li role="presentation"><a href="#">Chart</a></li>
+                        <li role="presentation"><a href="#">News</a></li>                    
+                        <li role="presentation"><a href="#">Calendar</a></li>                    
+                  </ul>
+                </div>
+    </div>
+    <div id="app">
+        <div class="grid-y medium-grid-frame">
+            <div class="cell" style="text-align: center; align-content: center; margin-top: 2%;">
+                <h2>OVERVIEW</h2>
+                <div id="ticker">
+                    <span v-for="result in ticker">{{ result.symbol }} {{ result.quotes.USD.price }}</span>
+                </div>
+            </div>
+            <div class="cell medium-auto medium-cell-block-container">
+                <div class="grid-x medium-grid-frame">
+                    <div class="cell medium-2 medium-cell-block-y">
+                        <ul id="coinlist">
+                                <h2>COIN LIST</h2>
+                            <li v-for="result in coinlist" :id="result.symbol">{{ result.symbol }} - {{ result.name }}</li>
+                        </ul>
+                    </div>
+                    <div class="cell medium-10 medium-cell-block-y">
+                            <h2>TRADING VIEW</h2>
+                        <div id="chart">
+                            <!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                                <div id="tradingview_4df86"></div>
+                                <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">AAPL chart</span></a> by TradingView</div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                                <script type="text/javascript">
+                                new TradingView.widget(
+                                {
+                                    "autosize": true,
+                                    "symbol": "KRAKEN:ETHUSD",
+                                    "interval": "D",
+                                    "timezone": "Etc/UTC",
+                                    "theme": "Light",
+                                    "style": "1",
+                                    "locale": "en",
+                                    "toolbar_bg": "#f1f3f6",
+                                    "enable_publishing": false,
+                                    "allow_symbol_change": true,
+                                    "container_id": "tradingview_4df86"
+                                });
+                                </script>
+                            </div>
+                            <!-- TradingView Widget END -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cell medium-3 medium-cell-block-container">
+                <div class="grid-x">
+                    <div class="cell medium-7 medium-cell-block-y">
+                        <h2>NEWS</h2>
+                        <ul id="news">
+                            <li v-for="result in news">{{ result.title }} - <a :href="result.url" target="_blank">Open</a></li>
+                        </ul>
+                    </div>
+                    <div class="cell medium-5 medium-cell-block-y">
+                        <h2>CALENDAR</h2>
+                        <div id="calendar">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum mauris nibh, eget facilisis est blandit ac. Fusce in luctus enim, vel commodo lorem. Morbi pretium neque id est bibendum, sit amet commodo lacus sodales. Phasellus consectetur velit massa, vel congue purus faucibus in. Suspendisse suscipit eleifend arcu, ut pretium nunc eleifend a. Quisque eros quam, lobortis vel auctor vitae, pretium in ipsum. Fusce porttitor purus elit, ut sollicitudin nisl ultricies eget. Ut at egestas ligula. In maximus aliquet elit. Aenean at posuere dolor. Maecenas placerat erat magna, mollis mattis elit scelerisque eget. Praesent iaculis tempus nibh. Sed consequat quis enim rhoncus laoreet. Duis dictum maximus eleifend.</p>
+                            <p>Sed hendrerit sem turpis, ullamcorper luctus est molestie ac. In hac habitasse platea dictumst. Praesent eget velit ut libero ultrices consectetur. Nam mollis aliquam sagittis. In rutrum, lacus eget lobortis ultrices, ligula turpis pretium ante, ut pretium velit dolor tristique urna. Curabitur ut mi a quam interdum egestas eget non arcu. Quisque et urna elit. Nullam felis erat, aliquet eu odio nec, vestibulum hendrerit nisl. Proin vehicula quam ante, id dignissim purus faucibus in. Mauris ut lorem nec justo sollicitudin ultricies vitae eu nibh.</p>
+                            <p>Maecenas aliquam nisl eget risus lacinia, pretium tincidunt eros bibendum. Aenean sagittis at mauris a volutpat. Proin molestie nisl quis aliquet pharetra. Cras blandit tincidunt ante semper sollicitudin. Suspendisse potenti. Cras congue mollis bibendum. Vestibulum at lectus gravida leo posuere fringilla. Phasellus finibus fermentum accumsan. Cras a nunc diam. Curabitur eu pretium ipsum. Sed gravida, mi eu dignissim commodo, augue enim mollis purus, id cursus ante eros et tellus. Nulla orci justo, efficitur at suscipit eget, tincidunt vel justo.</p>
+                            <p>Sed congue rutrum eros ac tristique. Curabitur quis pretium dolor, eu ullamcorper ante. Fusce nunc sem, suscipit ut consequat at, dignissim eget est. Nunc semper lacinia felis. Mauris non congue nisi. Morbi tincidunt mauris a risus auctor porta. Morbi viverra, orci nec congue pellentesque, mauris nulla dictum mauris, sit amet semper diam tortor id justo.</p>
+                            <p>Nulla convallis risus eget arcu mollis, a aliquam ligula venenatis. Proin at aliquet sem. Suspendisse tristique consequat risus sit amet mollis. Mauris tincidunt eros at volutpat tempus. Donec semper porttitor ultricies. Morbi nunc dui, sodales et cursus ac, vestibulum vel massa. Vivamus semper, diam a aliquam gravida, turpis purus auctor mi, id pellentesque velit neque vitae tellus. Cras id ullamcorper velit. Ut vulputate mi vel varius faucibus.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
