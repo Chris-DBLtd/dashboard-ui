@@ -39,7 +39,7 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active">
+                    <li >
                         <a class="nav-link" href="index.html">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Dashboard</p>
@@ -63,7 +63,7 @@
                             <p>Typography</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item active">
                         <a class="nav-link" href="./icons.html">
                             <i class="nc-icon nc-atom"></i>
                             <p>Icons</p>
@@ -161,63 +161,6 @@
             <div id="app" class="content">
                 <div class="container-fluid">
                     <div class="row">
-                            <div class="col-md-12">
-                                    <div class="card ">
-                                        <div class="card-header ">
-                                            <h4 class="card-title">Overview</h4>
-                                            <p class="card-category">Ticker</p>
-                                        </div>
-                                        <div class="card-body ">
-                                            <!-- TradingView Widget BEGIN -->
-                                            <div class="tradingview-widget-container">
-                                                    <div class="tradingview-widget-container__widget"></div>
-                                                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Quotes</span></a> by TradingView</div>
-                                                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
-                                                    {
-                                                    "symbols": [
-                                                    {
-                                                        "title": "S&P 500",
-                                                        "proName": "INDEX:SPX"
-                                                    },
-                                                    {
-                                                        "title": "Nasdaq 100",
-                                                        "proName": "INDEX:IUXX"
-                                                    },
-                                                    {
-                                                        "title": "EUR/USD",
-                                                        "proName": "FX_IDC:EURUSD"
-                                                    },
-                                                    {
-                                                        "title": "BTC/USD",
-                                                        "proName": "BITFINEX:BTCUSD"
-                                                    },
-                                                    {
-                                                        "title": "ETH/USD",
-                                                        "proName": "BITFINEX:ETHUSD"
-                                                    }
-                                                    ],
-                                                    "locale": "en"
-                                                }
-                                                    </script>
-                                                </div>
-                                                <!-- TradingView Widget END -->
-                                            
-                                        </div>
-                                        <div class="card-footer ">
-                                            <div class="legend">
-                                                <i class="fa fa-circle text-info"></i> Open
-                                                <i class="fa fa-circle text-danger"></i> Bounce
-                                                <i class="fa fa-circle text-warning"></i> Unsubscribe
-                                            </div>
-                                            <hr>
-                                            <div class="stats">
-                                                <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-12">
                             <div class="card ">
                                 <div class="card-header ">
@@ -243,8 +186,7 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="col-md-12">
+                        <div class="col-md-10">
                             <div class="card ">
                                 <div class="card-header ">
                                     <h4 class="card-title">TradingView</h4>
@@ -253,15 +195,139 @@
                                 </div>
                                 <div class="card-body">
                                     <div id="chart">
-                                        <!-- TradingView Widget BEGIN -->
-                                        <div id="tradingview_d3c80-wrapper" style="position: relative; box-sizing: content-box; width: 100%; height: calc(468px); margin: 0px auto !important; padding: 0px !important; font-family: Arial, sans-serif;">
-                                                <div style="width: 100%; height: calc(468px); background: transparent; padding: 0px !important;">
-                                                <iframe id="tradingview_d3c80" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_d3c80&amp;symbol=KRAKEN%3AETHUSD&amp;interval=D&amp;symboledit=1&amp;saveimage=1&amp;toolbarbg=f1f3f6&amp;studies=%5B%5D&amp;theme=Light&amp;style=3&amp;timezone=Etc%2FUTC&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en&amp;utm_source=docker.digital-branding.uk&amp;utm_medium=widget_new&amp;utm_campaign=chart&amp;utm_term=KRAKEN%3AETHUSD" frameborder="0" allowtransparency="true" scrolling="no" allowfullscreen="allowfullscreen" style="width: 100%; height: 100%; margin: 0px !important; padding: 0px !important;">
-                                                </iframe>
-                                                </div>
-                                                </div>
-                                                
-                                        <!-- TradingView Widget END -->
+                                       <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container" style="align-content: center">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/cryptocurrencies/" rel="noopener" target="_blank"><span class="blue-text">Bitcoin and Altcoin Prices</span></a> by TradingView</div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+    {
+    "title_raw":"Cryptocurrencies",
+    "symbolsGroups":[
+      {
+        "symbols": [
+          {
+            "name": "BITFINEX:BTCUSD"
+          },
+          {
+            "name": "BITFINEX:ETHUSD"
+          },
+          {
+            "name": "BITFINEX:XRPUSD"
+          },
+          {
+            "name": "COINBASE:BCHUSD"
+          },
+          {
+            "name": "COINBASE:LTCUSD"
+          },
+          {
+            "name": "BITFINEX:IOTUSD"
+          }
+        ],
+        "name": "Overview"
+      },
+      {
+        "symbols": [
+          {
+            "name": "BITFINEX:BTCUSD"
+          },
+          {
+            "name": "COINBASE:BTCEUR"
+          },
+          {
+            "name": "COINBASE:BTCGBP"
+          },
+          {
+            "name": "BITFLYER:BTCJPY"
+          },
+          {
+            "name": "WEX:BTCRUR"
+          },
+          {
+            "name": "CME:BTC1!"
+          }
+        ],
+        "name": "Bitcoin"
+      },
+      {
+        "symbols": [
+          {
+            "name": "BITFINEX:XRPUSD"
+          },
+          {
+            "name": "KRAKEN:XRPEUR"
+          },
+          {
+            "name": "KORBIT:XRPKRW"
+          },
+          {
+            "name": "BITSO:XRPMXN"
+          },
+          {
+            "name": "BINANCE:XRPBTC"
+          },
+          {
+            "name": "BITTREX:XRPETH"
+          }
+        ],
+        "name": "Ripple"
+      },
+      {
+        "symbols": [
+          {
+            "name": "COINBASE:ETHUSD"
+          },
+          {
+            "name": "KRAKEN:ETHEUR"
+          },
+          {
+            "name": "KRAKEN:ETHGBP"
+          },
+          {
+            "name": "KRAKEN:ETHJPY"
+          },
+          {
+            "name": "POLONIEX:ETHBTC"
+          },
+          {
+            "name": "WEX:ETHLTC"
+          }
+        ],
+        "name": "Ethereum"
+      },
+      {
+        "symbols": [
+          {
+            "name": "COINBASE:BCHUSD"
+          },
+          {
+            "name": "BITSTAMP:BCHEUR"
+          },
+          {
+            "name": "CEXIO:BCHGBP"
+          },
+          {
+            "name": "POLONIEX:BCHBTC"
+          },
+          {
+            "name": "HITBTC:BCHETH"
+          },
+          {
+            "name": "WEX:BCHLTC"
+          }
+        ],
+        "name": "Bitcoin Cash"
+      }
+    ],
+    "title": "Cryptocurrencies",
+    "title_link": "/markets/cryptocurrencies/prices-all/",
+    "locale": "en",
+    "height": 450,
+    "width": 770
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
                                     </div>
                                 </div>
                                 <div class="card-footer ">
@@ -278,121 +344,47 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card ">
-                                <div class="card-header">
-                                    <h4 class="card-title">Coin List</h4>
-                                    <div>
-                                        <p class="card-category">All products including Taxes</p>
-                                    </div>
-                                    
-                                </div>
-                                <div class="card-body pre-scrollable">
-                                    <ul id="coinlist">
-                                        <li v-for="result in coinlist" :id="result.symbol">{{ result.symbol }} - {{ result.name }}</li>
-                                    </ul>
-                                </div>
-                                <div class="card-footer ">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-danger"></i> BMW 5 Series
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-check"></i> Data information certified
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card  card-tasks">
-                                <div class="card-header ">
-                                    <h4 class="card-title">Calendar</h4>
-                                    <p class="card-category">Calendar</p>
-                                </div>
-                                <div class="card-body ">                                    
-                                <div id="calendar">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum mauris nibh, eget facilisis est blandit ac. Fusce in luctus enim, vel commodo lorem. Morbi pretium neque id est bibendum, sit amet commodo lacus sodales. Phasellus consectetur velit massa, vel congue purus faucibus in. Suspendisse suscipit eleifend arcu, ut pretium nunc eleifend a. Quisque eros quam, lobortis vel auctor vitae, pretium in ipsum. Fusce porttitor purus elit, ut sollicitudin nisl ultricies eget. Ut at egestas ligula. In maximus aliquet elit. Aenean at posuere dolor. Maecenas placerat erat magna, mollis mattis elit scelerisque eget. Praesent iaculis tempus nibh. Sed consequat quis enim rhoncus laoreet. Duis dictum maximus eleifend.</p>
-                                                                        
-                                </div>
-                                </div>
-                                <div class="card-footer ">
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card ">
-                            <div class="card-header ">
-                                <h4 class="card-title">News</h4>
-                                <p class="card-category">All products including Taxes</p>                                
-                            </div>
-                            <div class="card-body ">
-                                <ul id="news">
-                                    <li v-for="result in news">{{ result.title }} - <a :href="result.url" target="_blank">Open</a></li>
-                                </ul>
-                            </div>
-                            <div class="card-footer ">
-                                <div class="legend">
-                                    <i class="fa fa-circle text-info"></i> Tesla Model S
-                                    <i class="fa fa-circle text-danger"></i> BMW 5 Series
-                                </div>
-                                <hr>
-                                <div class="stats">
-                                    <i class="fa fa-check"></i> Data information certified
-                                </div>
-                            </div>
-                        </div>
-                    </div>                    
-                </div>
+                    
+                </div>                
             </div>
-            <footer class="footer" style="background-color: #1c1c1c;">
+            <footer class="footer">
                 <div class="container">
                     <nav>
                         <ul class="footer-menu">
                             <li>
-                                <a href="https://bcapinsights.com">
-                                    <i class="fa fa-globe" style="color:#21d279"></i>
+                                <a href="#">
+                                    Home
                                 </a>
                             </li>
                             <li>
-                                <a href="https://twitter.com">
-                                    <i class="fa fa-twitter" style="color:#21d279"></i>
-                                </a>
-                                
-                            </li>
-                            <li>
-                                <a href="https://facebook.com">
-                                    <i class="fa fa-facebook" style="color:#21d279"></i>
+                                <a href="#">
+                                    Company
                                 </a>
                             </li>
                             <li>
-                                <a href="https://linkedin.com">
-                                    <i class="fa fa-linkedin" style="color:#21d279"></i>
+                                <a href="#">
+                                    Portfolio
                                 </a>
                             </li>
-                           
+                            <li>
+                                <a href="#">
+                                    Blog
+                                </a>
+                            </li>
                         </ul>
                         <p class="copyright text-center">
                             ©
                             <script>
                                 document.write(new Date().getFullYear())
                             </script>
-                            <a href="https://bcapinsights.com" style="color:#21d279">BCAP Insights</a>
+                            <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
                         </p>
                     </nav>
                 </div>
             </footer>
         </div>
     </div>
-
+ 
 
 </body>
 <!--   Core JS Files   -->
