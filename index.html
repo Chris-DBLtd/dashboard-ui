@@ -24,8 +24,8 @@
     
 </head>
 
-<body>
-    <div class="wrapper">
+<body >
+    <div class="wrapper" >
         <div class="sidebar" data-color="black" data-image="https://bcapinsights.com/wp-content/uploads/2018/06/Background_fade.jpg">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
@@ -42,120 +42,125 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.html">
                             <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Dashboard</p>
+                            <p>Home</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="./user.html">
                             <i class="nc-icon nc-circle-09"></i>
-                            <p>User Profile</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./table.html">
-                            <i class="nc-icon nc-notes"></i>
-                            <p>Table List</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./typography.html">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Typography</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./icons.html">
-                            <i class="nc-icon nc-atom"></i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./maps.html">
-                            <i class="nc-icon nc-pin-3"></i>
-                            <p>Maps</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./notifications.html">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>Notifications</p>
+                            <p>Login</p>
                         </a>
                     </li>
                     <li class="nav-item active active-pro">
                         <a class="nav-link active" href="https://bcapinsights.com">
-                            <i class="nc-icon nc-send"></i>
+                            <i class="fa fa-globe"></i>
                             <p>Our Website</p>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="main-panel">
+        <div class="main-panel" style="padding-bottom: 0px !important;">
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class=" container-fluid  ">
-                    <a class="navbar-brand" href="#"> Dashboard </a>
+                    <a class="navbar-brand" href="#user"> Dashboard </a>
+                    
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
                     </button>
-                    
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-toggle="dropdown">
+                                    <i class="nc-icon nc-chart-pie-35"></i>
+                                    <span class="d-lg-none">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="dropdown nav-item">
+                                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                                    <i class="nc-icon nc-planet"></i>
+                                    <span class="notification">5</span>
+                                    <span class="d-lg-none">Notification</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Notification 1</a>
+                                    <a class="dropdown-item" href="#">Notification 2</a>
+                                    <a class="dropdown-item" href="#">Notification 3</a>
+                                    <a class="dropdown-item" href="#">Notification 4</a>
+                                    <a class="dropdown-item" href="#">Another notification</a>
+                                </ul>
+                            </li>                            
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#user">
+                                    <span class="no-icon">Account</span>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="no-icon">Dropdown</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <div class="divider"></div>
+                                    <a class="dropdown-item" href="#">Separated link</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#User">
+                                    <span class="no-icon">Log out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </nav>
             <!-- End Navbar -->
-            <div id="app" class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                            <div class="col-md-12">
-                                    <div class="card ">
-                                        <div class="card-header ">
-                                            <h4 class="card-title">Overview</h4>
-                                            <p class="card-category">Ticker</p>
-                                        </div>
-                                        <div class="card-body ">
-                                            <marquee behavior="scroll" direction="left">
-                                            <!-- TradingView Widget BEGIN -->
-                                            <div class="tradingview-widget-container">
-                                                    <div class="tradingview-widget-container__widget"></div>
-                                                    
-                                                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
-                                                    {
-                                                    "symbols":[
-                                                    {
-                                                        "title": "S&P 500",
-                                                        "proName": "INDEX:SPX"
-                                                    },
-                                                    {
-                                                        "title": "Nasdaq 100",
-                                                        "proName": "INDEX:IUXX"
-                                                    },
-                                                    {
-                                                        "title": "EUR/USD",
-                                                        "proName": "FX_IDC:EURUSD"
-                                                    },
-                                                    {
-                                                        "title": "BTC/USD",
-                                                        "proName": "BITFINEX:BTCUSD"
-                                                    },
-                                                    {
-                                                        "title": "ETH/USD",
-                                                        "proName": "BITFINEX:ETHUSD"
-                                                    }
-                                                    ],
-                                                    "locale": "en"
-                                                }
-                                                    </script>
-                                                </div>
-                                                <!-- TradingView Widget END -->
-                                            </marquee>
-                                        </div>
-                                        <div class="card-footer ">
-                                            
-                                        </div>
+            <div id="app" class="content">                    
+                <div class="container-fluid">                        
+                            <div class="col-md-12" style="padding-bottom: 3%;">
+                                <!-- TradingView Widget BEGIN -->
+                                <div class="tradingview-widget-container">
+                                        <div class="tradingview-widget-container__widget"></div>
+                                        
+                                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
+                                        {
+                                        "symbols":[
+                                        {
+                                            "title": "S&P 500",
+                                            "proName": "INDEX:SPX"
+                                        },
+                                        {
+                                            "title": "Nasdaq 100",
+                                            "proName": "INDEX:IUXX"
+                                        },
+                                        {
+                                            "title": "EUR/USD",
+                                            "proName": "FX_IDC:EURUSD"
+                                        },
+                                        {
+                                            "title": "BTC/USD",
+                                            "proName": "BITFINEX:BTCUSD"
+                                        },
+                                        {
+                                            "title": "ETH/USD",
+                                            "proName": "BITFINEX:ETHUSD"
+                                        }
+                                        ],
+                                        "locale": "en"
+                                    }
+                                        </script>
                                     </div>
-                                </div>
-                    </div>
+                                    <!-- TradingView Widget END -->                            
+                                
+                        </div>
                     <div class="row">                        
                         <div class="col-md-12">
                             <div class="card ">
@@ -254,14 +259,45 @@
                                     <li v-for="result in news">{{ result.title }} - <a :href="result.url" target="_blank">Open</a></li>
                                 </ul>
                             </div>
-                            <div class="card-footer ">
-                                
-                                    
-                                
+                            <div class="card-footer ">                                                           
                             </div>
                         </div>
                     </div>                    
                 </div>
+                <div class="row">
+                        <div class="col-md-12">
+                            <div class="card ">
+                                <div class="card-header ">
+                                    <h4 class="card-title">Cryptocurrency Market</h4>
+                                    <p class="card-category">Market</p>                                
+                                </div>
+                                <div class="card-body ">
+                                    
+                                   <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/cryptocurrencies/prices-all/" rel="noopener" target="_blank"><span class="blue-text">Cryptocurrency Markets</span></a> by TradingView</div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+        {
+        "width": "100%",
+        "height": "100%",
+        "defaultColumn": "moving_averages", 
+        "screener_type": "crypto_mkt",
+        "displayCurrency": "USD",
+        "locale": "en"
+      }
+        </script>
+      </div>
+      <!-- TradingView Widget END -->                                   
+                                </div>
+                                <div class="card-footer ">
+                                    
+                                        
+                                    
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>
             </div>
             <footer class="footer" style="background-color: #1c1c1c;">
                 <div class="container">
