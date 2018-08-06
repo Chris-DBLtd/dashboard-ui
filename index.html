@@ -96,45 +96,13 @@
                 </div>
             </nav>
             <!-- End Navbar -->
-            <div>
-                    <!-- TradingView Widget BEGIN -->
-                    <div class="tradingview-widget-container" >
-                            <div class="tradingview-widget-container__widget"></div>
-                            
-                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
-                            {
-                            "symbols":[
-                            {
-                                "title": "S&P 500",
-                                "proName": "INDEX:SPX"
-                            },
-                            {
-                                "title": "Nasdaq 100",
-                                "proName": "INDEX:IUXX"
-                            },
-                            {
-                                "title": "EUR/USD",
-                                "proName": "FX_IDC:EURUSD"
-                            },
-                            {
-                                "title": "BTC/USD",
-                                "proName": "BITFINEX:BTCUSD"
-                            },
-                            {
-                                "title": "ETH/USD",
-                                "proName": "BITFINEX:ETHUSD"
-                            }
-                            ],
-                            "locale": "en"
-                        }
-                            </script>
-                        </div>
-                        <!-- TradingView Widget END -->                            
-                    
-            </div>
             <div id="app" class="content">                    
-                <div class="container-fluid">                        
-                            
+                <div class="col-md-12">                
+                <marquee behavior="scroll" direction="left">
+                            <span style="color: whitesmoke" v-for="result in ticker">{{ result.symbol }} {{ result.quotes.USD.price }} &ensp;</span>
+                </marquee>
+                </div>
+                <div class="container-fluid">                                                    
                     <div class="row">                        
                         <div class="col-md-12">
                             <div class="card " style="background-color: #212529">
@@ -161,26 +129,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row" >
-                        <div class="col-md-12">
-                            <div class="card " style="background-color: #212529">
-                                <div class="card-header " style="background-color: #212529">
-                                    <h4 class="card-title" style="color: whitesmoke">Cryptocurrencies </h4>
-                                    <p class="card-category">Ticker</p>
-                                </div>
-                                <div class="card-body ">
-                                    <marquee behavior="scroll" direction="left">
-                                        <span style="color: whitesmoke" v-for="result in ticker">{{ result.symbol }} {{ result.quotes.USD.price }} &ensp;</span>
-                                    </marquee>
-                                    
-                                </div>
-                                <div class="card-footer ">
-                                    
-                                </div>
-                            </div>
-                        </div>                     
-                        
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -238,42 +186,43 @@
                         </div>
                     </div>                    
                 </div>
-                <div class="row">
-                        <div class="col-md-12" >
-                            <div class="card " style="background-color: #212529">
-                                <div class="card-header " style="background-color: #212529">
-                                    <h4 class="card-title" style="color: whitesmoke">Cryptocurrency Market</h4>
-                                    <p class="card-category">Market</p>                                
-                                </div>
-                                <div class="card-body" style="height: 400px;">
-                                    
-                                   <!-- TradingView Widget BEGIN -->
-                                    <div class="tradingview-widget-container">
-                                            <div class="tradingview-widget-container__widget"></div>
-                                            
-                                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-                                            {
-                                            "width": "100%",
-                                            "height": "100%",
-                                            "defaultColumn": "moving_averages", 
-                                            "screener_type": "crypto_mkt",
-                                            "displayCurrency": "USD",
-                                            "locale": "en",
-                                            "transparency":"true"
-                                        }
-                                            </script>
-                                        </div>
-                                        <!-- TradingView Widget END -->                                   
-                                </div>
-                                <div class="card-footer ">
-                                    
-                                        
-                                    
-                                </div>
-                            </div>
-                        </div>                    
-                    </div>
+                
             </div>
+            <div class="row">
+                    <div class="col-md-12" >
+                        <div class="card " style="background-color: #212529">
+                            <div class="card-header " style="background-color: #212529">
+                                <h4 class="card-title" style="color: whitesmoke">Cryptocurrency Market</h4>
+                                <p class="card-category">Market</p>                                
+                            </div>
+                            <div class="card-body" style="height: 400px;">
+                                
+                               <!-- TradingView Widget BEGIN -->
+                                <div class="tradingview-widget-container">
+                                        <div class="tradingview-widget-container__widget"></div>
+                                        
+                                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+                                        {
+                                        "width": "100%",
+                                        "height": "100%",
+                                        "defaultColumn": "moving_averages", 
+                                        "screener_type": "crypto_mkt",
+                                        "displayCurrency": "USD",
+                                        "locale": "en",
+                                        "transparency":"true"
+                                    }
+                                        </script>
+                                    </div>
+                                    <!-- TradingView Widget END -->                                   
+                            </div>
+                            <div class="card-footer ">
+                                
+                                    
+                                
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
             <footer class="footer" style="background-color: #1c1c1c;">
                 <div class="container" >
                     <nav>
