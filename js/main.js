@@ -1,28 +1,83 @@
 const apiURL = window.location.protocol + "//" + window.location.hostname + ":8080";
-document.addEventListener("DOMContentLoaded", () => {
-    const app = new Vue({
+$(() => {
+   const app = new Vue({
         el: "#app",
-        data () {
+        data() {
             return {
                 coinlist: [],
                 news: [],
                 ticker: []
             }
         },
-        mounted () {
-            getNews(this)();
-            const newsEl = document.querySelector("#news");
-            newsEl.addEventListener("scroll", () => {
-                if (newsEl.scrollTop + newsEl.clientHeight >= newsEl.scrollHeight) {
-                    getNews(this)();
+        methods: {
+            loadSymbol(event) {
+                this.getNewsForSymbol(event);
+                this.getCalendarForSymbol(event);
+            },
+            getNewsForSymbol(event) {
+                axios.get(apiURL + "/v1/news/" + event.currentTarget.id)
+                .then(res => {
+                    this.news = res.data.results;
+                });
+            },
+            getCalendarForSymbol(event) {
+                $("#calendar").fullCalendar("removeEventSources");
+                $("#calendar").fullCalendar("addEventSource", {
+                    url: apiURL + "/v1/calendar/" + event.currentTarget.id,
+                    color: "white",
+                    textColor: "white"
+                });
+            }
+        },
+        mounted() {
+            // Calendar
+            $("#calendar").fullCalendar({
+                defaultView: "month",
+                header: {
+                    left: "prev",
+                    center: "title",
+                    right: "next"
+                },
+                eventSources: [{
+                    url: apiURL + "/v1/calendar",
+                    color: "white",
+                    textColor: "white"
+                }],
+                eventRender: (ev, el) => {
+                    var coins = "";
+                    ev.coins.forEach((c, i) => {
+                        coins += c;
+                        if (i != ev.coins.length-1) {
+                            coins += ", ";
+                        }
+                    });
+        
+                    el.qtip({
+                        content: {
+                            title: ev.title,
+                            text: ev.description+"<br><br>Coins: "+coins
+                        },
+                        style: {
+                            classes: "qtip-tipsy"
+                        },
+                        position: {
+                            my: 'bottom center',
+                            at: 'top center'
+                        }
+                    });
                 }
             });
+        
+            // News
+            getNews(this)();
 
+            // Coin list
             axios.get(apiURL + "/v1/coin-list")
             .then(res => {
                 this.coinlist = res.data.data;
             });
-
+            
+            // Ticker
             getTicker(this)();
             setInterval(getTicker(this), 5000);
         }

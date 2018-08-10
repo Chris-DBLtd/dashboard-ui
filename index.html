@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="https://bcapinsights.com/wp-content/uploads/2018/06/Asset-1MR.png                                                                                                                                                                                                                                                                           ">
+    <link rel="icon" type="image/png" href="https://bcapinsights.com/wp-content/uploads/2018/06/Asset-1MR.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>BCAP Insights</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -17,11 +17,9 @@
     <link href="./assets/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="./assets/css/demo.css" rel="stylesheet" />
-    <!--Scripts For Dashboard Container -->
-    <script src="https://unpkg.com/vue"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="js/main.js"></script>
-    
+
+    <link href="https://unpkg.com/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
+    <link href="http://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.css" rel="stylesheet" />
 </head>
 
 <body >
@@ -49,15 +47,15 @@
                     <li class="nav-item active active-pro">
                         <a class="nav-link active" href="https://bcapinsights.com">
                             <i class="fa fa-globe"></i>
-                            <p>Our Website</p>
+                            <p>Our Website </p>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="main-panel" style="background-color: #212529">
+        <div class="main-panel">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg " color-on-scroll="500"style="background-color: #212529" >
+            <nav class="navbar navbar-expand-lg " color-on-scroll="500" style="background-color: #212529">
                 <div class=" container-fluid  ">
                     <a class="navbar-brand" href="#user"> Dashboard </a>
                     
@@ -88,119 +86,111 @@
                                     <a class="dropdown-item" href="#">Notification 4</a>
                                     <a class="dropdown-item" href="#">Another notification</a>
                                 </ul>
-                            </li>                            
+                            </li>
                         </ul>
-                        
-                        
                     </div>
                 </div>
             </nav>
             <!-- End Navbar -->
-            <div id="app" class="content">                    
-                <div class="col-md-12">                
-                <marquee behavior="scroll" direction="left">
-                            <span style="color: whitesmoke" v-for="result in ticker">{{ result.symbol }} {{ result.quotes.USD.price }} &ensp;</span>
-                </marquee>
-                </div>
-                <div class="container-fluid">                                                    
-                    <div class="row">                        
+            <div id="app" class="content">
+                <div class="container-fluid">
+                    <div class="row" >
                         <div class="col-md-12">
-                            <div class="card " style="background-color: #212529">
-                                <div class="card-header" style="background-color: #212529">
-                                    <h4 class="card-title"></h4>
-                                    <p class="card-category"></p>
-                                    
+                            <div class="card ">
+                                <div class="card-body">
+                                    <marquee behavior="scroll" direction="left">
+                                        <span class="ticker-list h4" v-for="result in ticker">{{ result.symbol }} ${{ result.quotes.USD.price }} ({{ result.quotes.USD.percent_change_24h }}%) Volume: {{ result.quotes.USD.volume_24h }}
+                                         
+                                        </span>
+                                    </marquee>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card ">
                                 <div class="card-body">
                                     <div id="chart">
                                         <!-- TradingView Widget BEGIN -->
                                         <div id="tradingview_d3c80-wrapper" style="position: relative; box-sizing: content-box; width: 100%; height: calc(468px); margin: 0px auto !important; padding: 0px !important; font-family: Arial, sans-serif;">
-                                                <div style="width: 100%; height: calc(468px); background: transparent; padding: 0px !important;">
+                                            <div style="width: 100%; height: calc(468px); background: transparent; padding: 0px !important;">
                                                 <iframe id="tradingview_d3c80" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_d3c80&amp;symbol=KRAKEN%3AETHUSD&amp;interval=D&amp;symboledit=1&amp;saveimage=1&amp;toolbarbg=f1f3f6&amp;studies=%5B%5D&amp;theme=Dark&amp;style=3&amp;timezone=Etc%2FUTC&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en&amp;utm_source=docker.digital-branding.uk&amp;utm_medium=widget_new&amp;utm_campaign=chart&amp;utm_term=KRAKEN%3AETHUSD" frameborder="0" allowtransparency="true" scrolling="no" allowfullscreen="allowfullscreen" style="width: 100%; height: 100%; margin: 0px !important; padding: 0px !important;">
                                                 </iframe>
-                                                </div>
-                                                </div>
-                                                
+                                            </div>
+                                        </div>
                                         <!-- TradingView Widget END -->
                                     </div>
-                                </div>
-                                <div class="card-footer ">
-                                   
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="card " style="background-color: #212529">
-                                <div class="card-header" style="background-color: #212529">
-                                    <h4 class="card-title" style="color: whitesmoke">Coin List</h4>
-                                    <div>
-                                        <p class="card-category">Custom Explanation</p>
-                                    </div>
-                                    
+                            <div class="card ">
+                                <div class="card-header">
+                                    <h4 class="card-title">Coin List</h4>
                                 </div>
                                 <div class="card-body pre-scrollable">
-                                    <ul id="coinlist" style="color: whitesmoke">
-                                        <li v-for="result in coinlist" :id="result.symbol">{{ result.symbol }} - {{ result.name }}</li>
-                                    </ul>
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th></th><th>Symbol</th><th>Name</th><th>Price</th><th></th><th>Market Cap</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="result in coinlist" v-on:click="loadSymbol" :id="result.symbol">
+                                                <td><img height="32px" width="32px" :src="'./assets/img/crypto-icons/' + result.symbol.toLowerCase() + '.png'" /></td><td>{{ result.symbol }}</td><td>{{ result.name }}</td><td>${{ result.quotes.USD.price }}</td><td :style="(result.quotes.USD.percent_change_24h < 0) ? 'color: #FF0000' : 'color: #21d279'">{{ result.quotes.USD.percent_change_24h }}%</td><td>${{ result.quotes.USD.market_cap }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div class="card-footer ">
+                                <div class="card-footer">
                                     
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="card  card-tasks" style="background-color: #212529">
-                                <div class="card-header " style="background-color: #212529">
-                                    <h4 class="card-title" style="color: whitesmoke">Calendar</h4>
-                                    <p class="card-category">Calendar</p>
+                            <div class="card  card-tasks">
+                                <div class="card-header">
+                                    <h4 class="card-title">Calendar</h4>
                                 </div>
-                                <div class="card-body ">                                    
-                                <div id="calendar">
-                                    <p style="color:whitesmoke">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum mauris nibh, eget facilisis est blandit ac. Fusce in luctus enim, vel commodo lorem. Morbi pretium neque id est bibendum, sit amet commodo lacus sodales. Phasellus consectetur velit massa, vel congue purus faucibus in. Suspendisse suscipit eleifend arcu, ut pretium nunc eleifend a. Quisque eros quam, lobortis vel auctor vitae, pretium in ipsum. Fusce porttitor purus elit, ut sollicitudin nisl ultricies eget. Ut at egestas ligula. In maximus aliquet elit. Aenean at posuere dolor. Maecenas placerat erat magna, mollis mattis elit scelerisque eget. Praesent iaculis tempus nibh. Sed consequat quis enim rhoncus laoreet. Duis dictum maximus eleifend.</p>
-                                                                        
-                                </div>
-                                </div>
-                                <div class="card-footer ">
-                                    
-                                </div>
+                                <div class="card-body" style="background-color: white">
+                                    <div id="calendar" >
+                                    </div>
+                                </div>                                
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card" style="background-color: #212529">
-                            <div class="card-header " style="background-color: #212529">
-                                <h4 class="card-title" style="color: whitesmoke">News</h4>
-                                <p class="card-category">Custom Explanation</p>                                
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">News</h4>
                             </div>
-                            <div class="card-body ">
+                            <div id="list1" class="card-body">
                                 <ul id="news">
-                                    <li style="color: whitesmoke" v-for="result in news">{{ result.title }} - <a :href="result.url" target="_blank">Open</a></li>
+                                        <li class="h5" v-for="result in news">{{ result.title }} - <a :href="result.url" target="_blank">Open</a></li>
                                 </ul>
                             </div>
-                            <div class="card-footer ">                                                           
+                            <div class="card-footer">
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
-                
             </div>
-            <div class="row">
+            <div class="row" style="padding-left: 18px; padding-right: 18px;">
                     <div class="col-md-12" >
-                        <div class="card " style="background-color: #212529">
-                            <div class="card-header " style="background-color: #212529">
-                                <h4 class="card-title" style="color: whitesmoke">Cryptocurrency Market</h4>
-                                <p class="card-category">Market</p>                                
+                        <div class="card ">
+                            <div class="card-header">
+                                <h4 class="card-title">Cryptocurrency Market</h4>
                             </div>
-                            <div class="card-body" style="height: 400px;">
-                                
+                            <div class="card-body" style="height: 400px;" style="border: 4px solid gray">
                                <!-- TradingView Widget BEGIN -->
-                                <div class="tradingview-widget-container">
-                                        <div class="tradingview-widget-container__widget"></div>
-                                        
+                                <div class="tradingview-widget-container" style="border: 4px solid gray">
+                                        <div class="tradingview-widget-container__widget" ></div>
+
                                         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
                                         {
                                         "width": "100%",
@@ -209,16 +199,14 @@
                                         "screener_type": "crypto_mkt",
                                         "displayCurrency": "USD",
                                         "locale": "en",
-                                        "transparency":"true"
+                                        "transparency":"false"
+                                        
                                     }
                                         </script>
                                     </div>
                                     <!-- TradingView Widget END -->                                   
                             </div>
-                            <div class="card-footer ">
-                                
-                                    
-                                
+                            <div class="card-footer">
                             </div>
                         </div>
                     </div>                    
@@ -236,7 +224,6 @@
                                 <a href="https://twitter.com">
                                     <i class="fa fa-twitter" style="color:#21d279"></i>
                                 </a>
-                                
                             </li>
                             <li>
                                 <a href="https://facebook.com">
@@ -248,7 +235,6 @@
                                     <i class="fa fa-linkedin" style="color:#21d279"></i>
                                 </a>
                             </li>
-                           
                         </ul>
                         <p class="copyright text-center">
                             ©
@@ -273,4 +259,14 @@
 <script src="../assets/js/plugins/bootstrap-switch.js"></script>
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
 <script src="../assets/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>
+
+<script src="http://cdn.jsdelivr.net/qtip2/3.0.3/jquery.qtip.min.js"></script>
+<script src="https://unpkg.com/moment/min/moment.min.js"></script>
+<script src="https://unpkg.com/fullcalendar/dist/fullcalendar.min.js"></script>
+
+<!--Scripts For Dashboard Container -->
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="js/main.js"></script>
+
 </html>
