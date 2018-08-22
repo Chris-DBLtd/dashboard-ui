@@ -92,80 +92,110 @@
                 </div>
             </nav>
             <!-- End Navbar -->
-            <div id="app" class="content">
+            <div id="app" class="content" style="padding: 0%;">
                 <div class="container-fluid">
                     <div class="row" >
                         <div class="col-md-12">
-                            <div class="card ">
-                                <div class="card-body">
+                            <div class="card">
+                                <div class="card-body" style="padding: 0%">
                                     <marquee behavior="scroll" direction="left">
-                                        <span class="ticker-list h4" v-for="result in ticker">{{ result.symbol }} ${{ result.quotes.USD.price }} ({{ result.quotes.USD.percent_change_24h }}%) Volume: {{ result.quotes.USD.volume_24h }}
+                                        <span class="ticker-list h4" v-for="result in ticker">
+                                            <a href="" style="color:blue">{{ result.symbol }} </a> 
+                                            <a href="" style="">${{ result.quotes.USD.price}}</a> 
+                                            <br>
+                                            <a href="" style="color:whitesmoke; font-size: 11px">({{ result.quotes.USD.percent_change_24h }}%)</a> 
+                                            <br>
+                                            <a href="" style="color:whitesmoke; font-size: 11px">Volume: </a> 
+                                            <a href="" style="color:whitesmoke; font-size: 11px">{{ result.quotes.USD.volume_24h }}</a>                                         
+                                        </span>                                  
                                          
-                                        </span>
                                     </marquee>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card ">
-                                <div class="card-body">
-                                    <div id="chart">
-                                        <!-- TradingView Widget BEGIN -->
-                                        <div id="tradingview_d3c80-wrapper" style="position: relative; box-sizing: content-box; width: 100%; height: calc(468px); margin: 0px auto !important; padding: 0px !important; font-family: Arial, sans-serif;">
-                                            <div style="width: 100%; height: calc(468px); background: transparent; padding: 0px !important;">
-                                                <iframe id="tradingview_d3c80" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_d3c80&amp;symbol=KRAKEN%3AETHUSD&amp;interval=D&amp;symboledit=1&amp;saveimage=1&amp;toolbarbg=f1f3f6&amp;studies=%5B%5D&amp;theme=Dark&amp;style=3&amp;timezone=Etc%2FUTC&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en&amp;utm_source=docker.digital-branding.uk&amp;utm_medium=widget_new&amp;utm_campaign=chart&amp;utm_term=KRAKEN%3AETHUSD" frameborder="0" allowtransparency="true" scrolling="no" allowfullscreen="allowfullscreen" style="width: 100%; height: 100%; margin: 0px !important; padding: 0px !important;">
-                                                </iframe>
+                    <div class="row row-borders">
+                            <div class="col-md-8">
+                                    <div class="card ">
+                                        <div class="card-body">
+                                            <div id="chart">
+                                                <!-- TradingView Widget BEGIN -->
+                                                <div id="tradingview_d3c80-wrapper" style="position: relative; box-sizing: content-box; width: 100%; height: calc(468px); margin: 0px auto !important; padding: 0px !important; font-family: Arial, sans-serif;">
+                                                    <div style="width: 100%; height: calc(468px); background: transparent; padding: 0px !important;">
+                                                        <iframe id="tradingview_d3c80" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_d3c80&amp;symbol=KRAKEN%3AETHUSD&amp;interval=D&amp;symboledit=1&amp;saveimage=1&amp;toolbarbg=f1f3f6&amp;studies=%5B%5D&amp;theme=Dark&amp;style=3&amp;timezone=Etc%2FUTC&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en&amp;utm_source=docker.digital-branding.uk&amp;utm_medium=widget_new&amp;utm_campaign=chart&amp;utm_term=KRAKEN%3AETHUSD" frameborder="0" allowtransparency="true" scrolling="no" allowfullscreen="allowfullscreen" style="width: 100%; height: 100%; margin: 0px !important; padding: 0px !important;">
+                                                        </iframe>
+                                                    </div>
+                                                </div>
+                                                <!-- TradingView Widget END -->
                                             </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="col-md-4">
+                                    <div class="card  card-tasks">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Calendar</h4>
+                                        </div>
+                                        <div class="card-body" style="background-color: white">
+                                            <div id="calendar" >
+                                            </div>
+                                        </div>                                
+                                    </div>
+                                    <div class="card ">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Coin List</h4>
+                                            </div>
+                                            <div class="card-body pre-scrollable">
+                                                <table class="table table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th><th>Symbol</th><th>Name</th><th>Price</th><th></th><th>Market Cap</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr v-for="result in coinlist" v-on:click="loadSymbol" :id="result.symbol">
+                                                            <td><img height="16px" width="16px" :src="'./assets/img/crypto-icons/' + result.symbol.toLowerCase() + '.png'" /></td><td>{{ result.symbol }}</td><td>{{ result.name }}</td><td>${{ result.quotes.USD.price }}</td><td :style="(result.quotes.USD.percent_change_24h < 0) ? 'color: #FF0000' : 'color: #21d279'">{{ result.quotes.USD.percent_change_24h }}%</td><td>${{ result.quotes.USD.market_cap }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>                                            
+                                        </div>
+                                    
+                                </div>
+                        
+                    </div>                    
+                </div>
+                <div class="row row-borders" style="padding: 0% 15px 0px 15px">
+                        <div class="col-md-6" >
+                                <div class="card ">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Cryptocurrency Market</h4>
+                                    </div>
+                                    <div class="card-body" style="height: 400px;" style="border: 4px solid gray">
+                                       <!-- TradingView Widget BEGIN -->
+                                        <div class="tradingview-widget-container">
+                                            <div class="tradingview-widget-container__widget" ></div>                                    
+                                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+                                            {
+                                            "width": "100%",
+                                            "height": "100%",
+                                            "defaultColumn": "overview",
+                                            "screener_type": "crypto_mkt",  
+                                            "displayCurrency": "USD",
+                                            "locale": "en",
+                                            "transparency": false
+                                        }
+                                            </script>
                                         </div>
                                         <!-- TradingView Widget END -->
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card ">
-                                <div class="card-header">
-                                    <h4 class="card-title">Coin List</h4>
-                                </div>
-                                <div class="card-body pre-scrollable">
-                                    <table class="table table-condensed">
-                                        <thead>
-                                            <tr>
-                                                <th></th><th>Symbol</th><th>Name</th><th>Price</th><th></th><th>Market Cap</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr v-for="result in coinlist" v-on:click="loadSymbol" :id="result.symbol">
-                                                <td><img height="32px" width="32px" :src="'./assets/img/crypto-icons/' + result.symbol.toLowerCase() + '.png'" /></td><td>{{ result.symbol }}</td><td>{{ result.name }}</td><td>${{ result.quotes.USD.price }}</td><td :style="(result.quotes.USD.percent_change_24h < 0) ? 'color: #FF0000' : 'color: #21d279'">{{ result.quotes.USD.percent_change_24h }}%</td><td>${{ result.quotes.USD.market_cap }}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="card-footer">
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card  card-tasks">
-                                <div class="card-header">
-                                    <h4 class="card-title">Calendar</h4>
-                                </div>
-                                <div class="card-body" style="background-color: white">
-                                    <div id="calendar" >
+                                    <div class="card-footer">
                                     </div>
-                                </div>                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
+                                </div>
+                            </div> 
+                    <div class="col-md-6">
+                        <div class="card pre-scrollable">
                             <div class="card-header">
                                 <h4 class="card-title">News</h4>
                             </div>
@@ -178,41 +208,12 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
+                
             </div>
-            <div class="row" style="padding-left: 18px; padding-right: 18px;">
-                    <div class="col-md-12" >
-                        <div class="card ">
-                            <div class="card-header">
-                                <h4 class="card-title">Cryptocurrency Market</h4>
-                            </div>
-                            <div class="card-body" style="height: 400px;" style="border: 4px solid gray">
-                               <!-- TradingView Widget BEGIN -->
-                                <div class="tradingview-widget-container" style="border: 4px solid gray">
-                                        <div class="tradingview-widget-container__widget" ></div>
-
-                                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-                                        {
-                                        "width": "100%",
-                                        "height": "100%",
-                                        "defaultColumn": "moving_averages", 
-                                        "screener_type": "crypto_mkt",
-                                        "displayCurrency": "USD",
-                                        "locale": "en",
-                                        "transparency":"false"
-                                        
-                                    }
-                                        </script>
-                                    </div>
-                                    <!-- TradingView Widget END -->                                   
-                            </div>
-                            <div class="card-footer">
-                            </div>
-                        </div>
-                    </div>                    
-                </div>
-            <footer class="footer" style="background-color: #1c1c1c;">
-                <div class="container" >
+            <footer class="footer" style="background-color: #1c1c1c; padding: 0%;">
+                <div class="container" style="padding: 0%">
                     <nav>
                         <ul class="footer-menu">
                             <li>
